@@ -188,69 +188,6 @@
             transition: width 0.3s;
         }
 
-        /* Video Player Styles */
-        .video-player {
-            position: relative;
-            width: 100%;
-            margin-top: 1.5rem;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.5rem;
-            background: #000;
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-title {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--gray);
-            text-align: center;
-        }
-
-        .video-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-        }
-
-        .nav-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .nav-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .nav-btn:disabled {
-            background-color: #334155;
-            cursor: not-allowed;
-        }
-
-        .video-counter {
-            color: var(--gray);
-            font-size: 0.875rem;
-            align-self: center;
-        }
-
         @media (max-width: 640px) {
             .logo {
                 font-size: 2rem;
@@ -321,96 +258,9 @@
             <h2 class="card-title">Active Processes</h2>
             <div id="processing"></div>
         </div>
-
-        <div class="card">
-            <h2 class="card-title">Relax While Waiting</h2>
-            <p style="color: var(--gray); margin-bottom: 1rem;">Enjoy this video while your shares are processing</p>
-            
-            <div class="video-player">
-                <div class="video-container">
-                    <video id="currentVideo" autoplay muted loop>
-                        <!-- Video will be set by JavaScript -->
-                    </video>
-                </div>
-                <p id="videoTitle" class="video-title"></p>
-                
-                <div class="video-controls">
-                    <button id="prevBtn" class="nav-btn">Previous</button>
-                    <span id="videoCounter" class="video-counter">1/5</span>
-                    <button id="nextBtn" class="nav-btn">Next</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
-        // Video gallery data
-        const videos = [
-            {
-                title: "Mountain Sunset",
-                url: "https://assets.mixkit.co/videos/preview/mixkit-mountain-with-foggy-summit-1192-large.mp4"
-            },
-            {
-                title: "Ocean Waves",
-                url: "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4"
-            },
-            {
-                title: "Forest Walk",
-                url: "https://assets.mixkit.co/videos/preview/mixkit-walking-through-forest-with-trees-and-ferns-4075-large.mp4"
-            },
-            {
-                title: "Desert Dunes",
-                url: "https://assets.mixkit.co/videos/preview/mixkit-sand-dunes-in-the-desert-4151-large.mp4"
-            },
-            {
-                title: "Waterfall",
-                url: "https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4"
-            }
-        ];
-
-        // Video player elements
-        const videoElement = document.getElementById('currentVideo');
-        const videoTitleElement = document.getElementById('videoTitle');
-        const videoCounterElement = document.getElementById('videoCounter');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        let currentVideoIndex = 0;
-
-        // Function to load video
-        function loadVideo(index) {
-            currentVideoIndex = index;
-            const video = videos[index];
-            
-            videoElement.src = video.url;
-            videoTitleElement.textContent = video.title;
-            videoCounterElement.textContent = `${index + 1}/${videos.length}`;
-            
-            // Update button states
-            prevBtn.disabled = index === 0;
-            nextBtn.disabled = index === videos.length - 1;
-            
-            // Auto-play the video (muted)
-            videoElement.play();
-        }
-
-        // Event listeners for navigation buttons
-        prevBtn.addEventListener('click', () => {
-            if (currentVideoIndex > 0) {
-                loadVideo(currentVideoIndex - 1);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentVideoIndex < videos.length - 1) {
-                loadVideo(currentVideoIndex + 1);
-            }
-        });
-
-        // Initialize with first video
-        loadVideo(0);
-
-        // Form submission function
         async function submitForm(event) {
             event.preventDefault();
             const result = document.getElementById('result');
@@ -547,4 +397,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
